@@ -208,4 +208,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Conectore
+*.jar
+
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,netbeans,visualstudiocode,linux,macos,windows,maven
