@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Usuarios | Tienda</title>
+    <title>Clientes | Tienda</title>
 
 
     <!-- Google Fonts -->
@@ -25,7 +25,7 @@
     
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
     	var usuarios = $.ajax({
     		type: "GET",
     		url: "http://localhost:8082/listarUsuarios",
@@ -68,7 +68,7 @@
     	}
     	
     	
-    </script>
+    </script>-->
     
     
 </head>
@@ -91,23 +91,23 @@
 		<section id="services" class="services section-bg">
 			<div class="container">
 				<div class="section-title">
-					<h2>Usuarios</h2>
+					<h2>Clientes</h2>
 				</div>
 				<div class="row mt-3">
 					<div class="col-lg-3 col-md-4">
 						<div class="icon-box">
 							<div class="icon">
-								<i class="bx bxs-user-plus" style="color: #ff689b;"></i>
+								<i class="bx bx-clipboard" style="color: #41cf2e;"></i>
 							</div>
 							<h4 class="title">
-								<a href="./addUser.jsp">Agregar Usuario</a>
+								<a href="./addUser.jsp">Agregar Cliente</a>
 							</h4>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-4">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-search" style="color: #e9bf06;"></i></div>
-                            <h4 class="title"><a href="./searchUser.jsp">Consultar Usuario</a></h4>
+                            <div class="icon"><i class="bx bxs-id-card" style="color: #d6ff22;"></i></div>
+                            <h4 class="title"><a href="./searchUser.jsp">Consultar Cliente</a></h4>
                         </div>
                     </div>
 				</div>
@@ -119,9 +119,10 @@
 							<thead class="table-dark">
 								<tr>
 									<th scope="col">Cédula</th>
-									<th scope="col">Correo Electrónico</th>
-									<th scope="col">Usuario</th>
 									<th scope="col">Nombre Completo</th>
+									<th scope="col">Dirección</th>
+									<th scope="col">Teléfono</th>
+									<th scope="col">Correo Electrónico</th>
 									<th scope="col" colspan="2">Acciones</th>
 								</tr>
 							</thead>

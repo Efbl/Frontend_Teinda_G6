@@ -2,8 +2,8 @@
 	<ul>
 		<!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
 		<li><a class="nav-link scrollto" href="./users.jsp">Usuarios</a></li>
-		<li><a class="nav-link scrollto" href="#">Clientes</a></li>
-		<li><a class="nav-link scrollto" href="#">Proveedores</a></li>
+		<li><a class="nav-link scrollto" href="./customers.jsp">Clientes</a></li>
+		<li><a class="nav-link scrollto" href="./providers.jsp">Proveedores</a></li>
 		<li><a class="nav-link scrollto" href="#">Productos</a></li>
 		<li><a class="nav-link scrollto" href="#">Ventas</a></li>
 		<li><a class="nav-link scrollto" href="#">Reportes</a></li>

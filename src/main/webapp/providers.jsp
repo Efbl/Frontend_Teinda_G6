@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Usuarios | Tienda</title>
+    <title>Proveedores | Tienda</title>
 
 
     <!-- Google Fonts -->
@@ -28,23 +28,25 @@
     <script type="text/javascript">
     	var usuarios = $.ajax({
     		type: "GET",
-    		url: "http://localhost:8082/listarUsuarios",
+    		url: "http://localhost:8082/listarProveedores",
     		success: function(data){
     			$.each(data, function(i, item) {
     				lista = document.getElementById("myTableBody");
     				var tr = document.createElement("tr");
     				var columna1 = document.createElement("td");
-    				columna1.innerHTML = item.cedulaUsuario;
+    				columna1.innerHTML = item.nitProveedor;
     				var columna2 = document.createElement("td");
-    				columna2.innerHTML = item.emailUsuario;
+    				columna2.innerHTML = item.nombreProveedor;
     				var columna3 = document.createElement("td");
-    				columna3.innerHTML = item.nombreUsuario;	
+    				columna3.innerHTML = item.ciudadProveedor;	
     				var columna4 = document.createElement("td");
-    				columna4.innerHTML = item.usuario; 
+    				columna4.innerHTML = item.direccionProveedor;
     				var columna5 = document.createElement("td");
-    				columna5.innerHTML = "<a href='./updateUser.jsp?cedula="+item.cedulaUsuario+"'  class='btn btn-light' title='Editar Usuario'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
+    				columna5.innerHTML = item.telefonoProveedor;
     				var columna6 = document.createElement("td");
-    				columna6.innerHTML = "<a class='btn btn-light' title='Eliminar Usuario' onclick=borrar_usuario('"+item.cedulaUsuario+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
+    				columna6.innerHTML = "<a href='./updateProvider.jsp?nit="+item.nitProveedor+"'  class='btn btn-light' title='Editar Proveedor'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
+    				var columna7 = document.createElement("td");
+    				columna7.innerHTML = "<a class='btn btn-light' title='Eliminar Proveedor' onclick=borrar_usuario('"+item.nitProveedor+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
     				
     				lista.appendChild(tr);
     				tr.appendChild(columna1);
@@ -53,14 +55,15 @@
     				tr.appendChild(columna4);
     				tr.appendChild(columna5);
     				tr.appendChild(columna6);
+    				tr.appendChild(columna7);
     			});
     		}
     	});
     	
-    	function borrar_usuario(cedula) {
+    	function borrar_usuario(nit) {
     		var borrar = $.ajax({
     			type: "DELETE",
-    			url: "http://localhost:8082/eliminarUsuario?cedula=" + cedula,
+    			url: "http://localhost:8082/eliminarProveedor?nit=" + nit,
     			success: function(data) {
     				location.reload();
     			}
@@ -91,23 +94,23 @@
 		<section id="services" class="services section-bg">
 			<div class="container">
 				<div class="section-title">
-					<h2>Usuarios</h2>
+					<h2>Proveedores</h2>
 				</div>
 				<div class="row mt-3">
 					<div class="col-lg-3 col-md-4">
 						<div class="icon-box">
 							<div class="icon">
-								<i class="bx bxs-user-plus" style="color: #ff689b;"></i>
+								<i class="bx bxs-archive-out" style="color: #4680ff;"></i>
 							</div>
 							<h4 class="title">
-								<a href="./addUser.jsp">Agregar Usuario</a>
+								<a href="./addProvider.jsp">Agregar Proveedor</a>
 							</h4>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-4">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-search" style="color: #e9bf06;"></i></div>
-                            <h4 class="title"><a href="./searchUser.jsp">Consultar Usuario</a></h4>
+                            <div class="icon"><i class="bx bxs-book-open" style="color: #3fcdc7;"></i></div>
+                            <h4 class="title"><a href="./searchProvider.jsp">Consultar Proveedor</a></h4>
                         </div>
                     </div>
 				</div>
@@ -118,10 +121,11 @@
 							class="table table-dark table-borderless table-striped text-center">
 							<thead class="table-dark">
 								<tr>
-									<th scope="col">Cédula</th>
-									<th scope="col">Correo Electrónico</th>
-									<th scope="col">Usuario</th>
-									<th scope="col">Nombre Completo</th>
+									<th scope="col">Nit</th>
+									<th scope="col">Nombre</th>
+									<th scope="col">Ciudad</th>
+									<th scope="col">Dirección</th>
+									<th scope="col">Teléfono</th>
 									<th scope="col" colspan="2">Acciones</th>
 								</tr>
 							</thead>

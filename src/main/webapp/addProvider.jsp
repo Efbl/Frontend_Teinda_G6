@@ -6,7 +6,7 @@
 <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Usuarios | Tienda</title>
+    <title>Proveedores | Tienda</title>
 
 
     <!-- Google Fonts -->
@@ -26,26 +26,25 @@
     
     <script>
     function register() {
-	    const emailUsuario = document.getElementById("emailUsuario").value;
-	    const nombreUsuario = document.getElementById("nombreUsuario").value;
-	    const cedulaUsuario = document.getElementById("cedulaUsuario").value;
-	    const usuario = document.getElementById("usuario").value;
-		const password = document.getElementById("password").value;
+	    const nitProveedor = document.getElementById("nitProveedor").value;
+	    const nombreProveedor = document.getElementById("nombreProveedor").value;
+	    const ciudadProveedor = document.getElementById("ciudadProveedor").value;
+	    const direccionProveedor = document.getElementById("direccionProveedor").value;
+		const telefonoProveedor = document.getElementById("telefonoProveedor").value;
 		
-		console.log(emailUsuario, nombreUsuario, cedulaUsuario, usuario, password);
 		
-		var login = $.ajax({
+		var add = $.ajax({
 			type: "POST",
-			url: "http://localhost:8082/registrarUsuario",
-			data: JSON.stringify({"cedulaUsuario": cedulaUsuario, "emailUsuario": emailUsuario, "nombreUsuario": nombreUsuario, "usuario": usuario, "password": password}),
+			url: "http://localhost:8082/registrarProveedor",
+			data: JSON.stringify({"nitProveedor": nitProveedor, "nombreProveedor": nombreProveedor, "ciudadProveedor": ciudadProveedor, "direccionProveedor": direccionProveedor, "telefonoProveedor": telefonoProveedor}),
 			datatype: "json",
 			contentType: "application/json",
 			success: function(res) {
 				console.log(res);
 				if (res == true){
-					location.replace("./users.jsp");
+					location.replace("./providers.jsp");
 				} else {
-					window.alert("Error Agregando Usuarios");
+					window.alert("Error Agregando Proveedor");
 				}
 			}
 		});
@@ -73,23 +72,23 @@
 		<section id="services" class="services section-bg">
 			<div class="container">
 				<div class="section-title">
-					<h2>Agregar Usuario</h2>
+					<h2>Agregar Proveedor</h2>
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-10 mx-auto mb-5">
 						<form method="post" action="" onsubmit=register()>
-							<input type="email" class="form-control mb-3" name="emailUsuario" id="emailUsuario"
-								placeholder="Correo Electrónico" required> <input type="text"
-								class="form-control mb-3" name="nombreUsuario" id="nombreUsuario"
-								placeholder="Nombre Completo" required> <input type="number"
-								class="form-control mb-3" name="cedulaUsuario" id="cedulaUsuario"
-								placeholder="Número de Cédula" required> <input type="password"
-								class="form-control mb-3" name="password" id="password"
-								placeholder="Contraseña" required> <input type="text"
-								class="form-control mb-3" name="usuario" id="usuario" placeholder="Usuario" required>
+							<input type="number" class="form-control mb-3" name="nitProveedor" id="nitProveedor"
+								placeholder="Nit Proveedor" required> <input type="text"
+								class="form-control mb-3" name="nombreProveedor" id="nombreProveedor"
+								placeholder="Nombre Proveedor" required> <input type="text"
+								class="form-control mb-3" name="ciudadProveedor" id="ciudadProveedor"
+								placeholder="Ciudad" required> <input type="text"
+								class="form-control mb-3" name="direccionProveedor" id="direccionProveedor"
+								placeholder="Dirección" required> <input type="text"
+								class="form-control mb-3" name="telefonoProveedor" id="telefonoProveedor" placeholder="Teléfono" required>
 							<p class="text-center">
 								<input type="submit" class="btn btn-primary btn-block"
-									value="Agregar Usuario">
+									value="Agregar Proveedor">
 							</p>
 						</form>
 					</div>

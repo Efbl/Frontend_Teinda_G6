@@ -6,7 +6,7 @@
 <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Usuarios | Tienda</title>
+    <title>Proveedores | Tienda</title>
 
 
     <!-- Google Fonts -->
@@ -45,17 +45,17 @@
 		<section id="services" class="services section-bg">
 			<div class="container">
 				<div class="section-title">
-					<h2>Consultar Usuario</h2>
+					<h2>Consultar Proveedor</h2>
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-10 mx-auto mb-5">
 						<form method="post" action="" >
 							<div class="row mt-3">
 								<div class="col-md-5 mx-auto mb-5">
-								 <input type="number" class="form-control mb-3" name="cedulaUsuario" id="cedulaUsuario" placeholder="Número de Cédula" required> 
+								 <input type="number" class="form-control mb-3" name="nitProveedor" id="nitProveedor" placeholder="Nit del Proveedor" required> 
 								</div>
 								<div class="col-md-5 mx-auto mb-5">
-									<button type="button" class="btn btn-primary btn-block" onclick=search()>Buscar Usuario  <i class="bx bx-search ml-5"></i></button>
+									<button type="button" class="btn btn-primary btn-block" onclick=search()>Buscar Proveedor  <i class="bx bx-search ml-5"></i></button>
 								</div>
 							</div>
 						</form>
@@ -63,16 +63,17 @@
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-8 mx auto mb-2"></div>
-					<p style="color:red;" id="text">El documento no coincide con ningún usuario registrado</p>
+					<p style="color:red;" id="text">El documento no coincide con ningún proveedor registrado</p>
 					<div class="table-responsive-sm">
 						<table
 							class="table table-dark table-borderless table-striped text-center" id="myTable">
 							<thead class="table-dark">
 								<tr>
-									<th scope="col">Cédula</th>
-									<th scope="col">Correo Electrónico</th>
-									<th scope="col">Usuario</th>
-									<th scope="col">Nombre Completo</th>
+									<th scope="col">Nit</th>
+									<th scope="col">Nombre</th>
+									<th scope="col">Ciudad</th>
+									<th scope="col">Dirección</th>
+									<th scope="col">Teléfono</th>
 									<th scope="col" colspan="2">Acciones</th>
 								</tr>
 							</thead>
@@ -93,10 +94,10 @@
     text.style.visibility = "hidden";
     
     function search() {
-    	cedulaUsuario = document.getElementById("cedulaUsuario").value;
-    	var searchUser = $.ajax({
+    	nitProveedor = document.getElementById("nitProveedor").value;
+    	var searchProvider = $.ajax({
     		type:"GET",
-    		url: "http://localhost:8082/consultarUsuario?cedula=" + cedulaUsuario,
+    		url: "http://localhost:8082/consultarProveedor?nit=" + nitProveedor,
     		success: function(data) {
     			console.log(data);
     			if(data.length > 0){ 
@@ -107,17 +108,19 @@
         				lista = document.getElementById("myTableBody");
         				var tr = document.createElement("tr");
         				var columna1 = document.createElement("td");
-        				columna1.innerHTML = item.cedulaUsuario;
+        				columna1.innerHTML = item.nitProveedor;
         				var columna2 = document.createElement("td");
-        				columna2.innerHTML = item.emailUsuario;
+        				columna2.innerHTML = item.nombreProveedor;
         				var columna3 = document.createElement("td");
-        				columna3.innerHTML = item.nombreUsuario;	
+        				columna3.innerHTML = item.ciudadProveedor;	
         				var columna4 = document.createElement("td");
-        				columna4.innerHTML = item.usuario; 
+        				columna4.innerHTML = item.direccionProveedor;
         				var columna5 = document.createElement("td");
-        				columna5.innerHTML = "<a href='http://localhost:8082/editarUsuario"+item.cedulaUsuario+"'  class='btn btn-light' title='Editar Usuario'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
+        				columna5.innerHTML = item.telefonoProveedor;
         				var columna6 = document.createElement("td");
-        				columna6.innerHTML = "<a class='btn btn-light' title='Eliminar Usuario' onclick=borrar_usuario('"+item.cedulaUsuario+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
+        				columna6.innerHTML = "<a href='./updateProvider.jsp?nit="+item.nitProveedor+"'  class='btn btn-light' title='Editar Proveedor'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
+        				var columna7 = document.createElement("td");
+        				columna7.innerHTML = "<a class='btn btn-light' title='Eliminar Proveedor' onclick=borrar_usuario('"+item.nitProveedor+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
         				
         				lista.appendChild(tr);
         				tr.appendChild(columna1);
@@ -126,7 +129,8 @@
         				tr.appendChild(columna4);
         				tr.appendChild(columna5);
         				tr.appendChild(columna6);
-        			 });
+        				tr.appendChild(columna7);
+        			});
     			} else {
     				text.style.visibility = "visible";
     				myTable.style.visibility = "hidden";
@@ -135,10 +139,10 @@
     	});
     }
     
-    function borrar_usuario(cedula) {
+    function borrar_usuario(nit) {
 		var borrar = $.ajax({
 			type: "DELETE",
-			url: "http://localhost:8082/eliminarUsuario?cedula=" + cedula,
+			url: "http://localhost:8082/eliminarProveedor?nit=" + nit,
 			success: function(data) {
 				location.reload();
 			}
