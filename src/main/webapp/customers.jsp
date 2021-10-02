@@ -25,26 +25,28 @@
     
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
-    <!--<script type="text/javascript">
+    <script type="text/javascript">
     	var usuarios = $.ajax({
     		type: "GET",
-    		url: "http://localhost:8082/listarUsuarios",
+    		url: "http://localhost:8082/listarClientes",
     		success: function(data){
     			$.each(data, function(i, item) {
     				lista = document.getElementById("myTableBody");
     				var tr = document.createElement("tr");
     				var columna1 = document.createElement("td");
-    				columna1.innerHTML = item.cedulaUsuario;
+    				columna1.innerHTML = item.cedulaCliente;
     				var columna2 = document.createElement("td");
-    				columna2.innerHTML = item.emailUsuario;
+    				columna2.innerHTML = item.nombreCliente;	
     				var columna3 = document.createElement("td");
-    				columna3.innerHTML = item.nombreUsuario;	
+    				columna3.innerHTML = item.emailCliente;
     				var columna4 = document.createElement("td");
-    				columna4.innerHTML = item.usuario; 
+    				columna4.innerHTML = item.direccionCliente; 
     				var columna5 = document.createElement("td");
-    				columna5.innerHTML = "<a href='./updateUser.jsp?cedula="+item.cedulaUsuario+"'  class='btn btn-light' title='Editar Usuario'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
+    				columna5.innerHTML = item.telefonoCliente; 
     				var columna6 = document.createElement("td");
-    				columna6.innerHTML = "<a class='btn btn-light' title='Eliminar Usuario' onclick=borrar_usuario('"+item.cedulaUsuario+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
+    				columna6.innerHTML = "<a href='./updateCustomer.jsp?cedula="+item.cedulaCliente+"'  class='btn btn-light' title='Editar Cliente'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
+    				var columna7 = document.createElement("td");
+    				columna7.innerHTML = "<a class='btn btn-light' title='Eliminar Cliente' onclick=borrar_cliente('"+item.cedulaCliente+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
     				
     				lista.appendChild(tr);
     				tr.appendChild(columna1);
@@ -53,14 +55,15 @@
     				tr.appendChild(columna4);
     				tr.appendChild(columna5);
     				tr.appendChild(columna6);
+    				tr.appendChild(columna7);
     			});
     		}
     	});
     	
-    	function borrar_usuario(cedula) {
+    	function borrar_cliente(cedula) {
     		var borrar = $.ajax({
     			type: "DELETE",
-    			url: "http://localhost:8082/eliminarUsuario?cedula=" + cedula,
+    			url: "http://localhost:8082/eliminarCliente?cedula=" + cedula,
     			success: function(data) {
     				location.reload();
     			}
@@ -68,7 +71,7 @@
     	}
     	
     	
-    </script>-->
+    </script>
     
     
 </head>
@@ -100,14 +103,14 @@
 								<i class="bx bx-clipboard" style="color: #41cf2e;"></i>
 							</div>
 							<h4 class="title">
-								<a href="./addUser.jsp">Agregar Cliente</a>
+								<a href="./addCustomer.jsp">Agregar Cliente</a>
 							</h4>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-4">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bxs-id-card" style="color: #d6ff22;"></i></div>
-                            <h4 class="title"><a href="./searchUser.jsp">Consultar Cliente</a></h4>
+                            <h4 class="title"><a href="./searchCustomer.jsp">Consultar Cliente</a></h4>
                         </div>
                     </div>
 				</div>
@@ -120,9 +123,9 @@
 								<tr>
 									<th scope="col">Cédula</th>
 									<th scope="col">Nombre Completo</th>
+									<th scope="col">Correo Electrónico</th>
 									<th scope="col">Dirección</th>
 									<th scope="col">Teléfono</th>
-									<th scope="col">Correo Electrónico</th>
 									<th scope="col" colspan="2">Acciones</th>
 								</tr>
 							</thead>

@@ -140,7 +140,7 @@
 			type: "DELETE",
 			url: "http://localhost:8082/eliminarUsuario?cedula=" + cedula,
 			success: function(data) {
-				location.reload();
+				location.replace("./users.jsp");
 			}
 		});
 	}

@@ -6,7 +6,7 @@
 <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Usuarios | Tienda</title>
+    <title>Clientes | Tienda</title>
 
 
     <!-- Google Fonts -->
@@ -45,23 +45,19 @@
 		<section id="services" class="services section-bg">
 			<div class="container">
 				<div class="section-title">
-					<h2>Actualizar Usuario</h2>
+					<h2>Actualizar Cliente</h2>
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-10 mx-auto mb-5">
 						<form method="post" action="" onsubmit=register() >
-							<input type="email" class="form-control mb-3" name="emailUsuario" id="emailUsuario"
-								placeholder="Correo Electrónico" title="Correo Electrónico" required> <input type="text"
-								class="form-control mb-3" name="nombreUsuario" id="nombreUsuario"
-								placeholder="Nombre Completo" title="Nombre Completo" required> <input type="number"
-								class="form-control mb-3" name="cedulaUsuario" id="cedulaUsuario"
-								placeholder="Número de Cédula" title="Número de Cédula" required> <input type="text"
-								class="form-control mb-3" name="password" id="password"
-								placeholder="Contraseña" title="Contraseña" required> <input type="text"
-								class="form-control mb-3" name="usuario" id="usuario" placeholder="Usuario" title="Usuario" required>
+							<input type="number" class="form-control mb-3" name="cedulaCliente" id="cedulaCliente" placeholder="Número de Cédula" title="Número de Cédula" required> 
+							<input type="email" class="form-control mb-3" name="emailCliente" id="emailCliente" placeholder="Correo Electrónico" title="Correo Electrónico" required> 
+							<input type="text" class="form-control mb-3" name="nombreCliente" id="nombreCliente" placeholder="Nombre Completo" title="Nombre Completo" required> 
+							<input type="text" class="form-control mb-3" name="direccionCliente" id="direccionCliente" placeholder="Dirección" title="Dirección" required> 
+							<input type="text" class="form-control mb-3" name="telefonoCliente" id="telefonoCliente" placeholder="Teléfono" title="Teléfono" required>
 							<p class="text-center">
 								<input type="submit" class="btn btn-primary btn-block"
-									value="Actualizar Usuario" >
+									value="Actualizar Cliente" >
 							</p>
 						</form>
 					</div>
@@ -74,44 +70,41 @@
 	<script>
     
     const cedula = "<%= request.getParameter("cedula") %>";
-    document.getElementById("cedulaUsuario").value = cedula;
+    document.getElementById("cedulaCliente").value = cedula;
     
     var searchUser = $.ajax({
 		type:"GET",
-		url: "http://localhost:8082/consultarUsuario?cedula=" + cedula,
+		url: "http://localhost:8082/consultarCliente?cedula=" + cedula,
 		success: function(data) {
 			$.each(data, function(i, item) {
-				document.getElementById("emailUsuario").value = item.emailUsuario;
-				document.getElementById("nombreUsuario").value = item.nombreUsuario;
-				document.getElementById("usuario").value = item.usuario;
-				document.getElementById("password").value = item.password;
+				document.getElementById("emailCliente").value = item.emailCliente;
+				document.getElementById("nombreCliente").value = item.nombreCliente;
+				document.getElementById("direccionCliente").value = item.direccionCliente;
+				document.getElementById("telefonoCliente").value = item.telefonoCliente;
 			})
 		}
     });
     
     
     function register() {
-	    const emailUsuario = document.getElementById("emailUsuario").value;
-	    const nombreUsuario = document.getElementById("nombreUsuario").value;
-	    const cedulaUsuario = document.getElementById("cedulaUsuario").value;
-	    const usuario = document.getElementById("usuario").value;
-		const password = document.getElementById("password").value;
-		
-		console.log(emailUsuario, nombreUsuario, cedulaUsuario, usuario, password);
+	    const emailCliente = document.getElementById("emailCliente").value;
+	    const nombreCliente = document.getElementById("nombreCliente").value;
+	    const cedulaCliente = document.getElementById("cedulaCliente").value;
+	    const direccionCliente = document.getElementById("direccionCliente").value;
+		const telefonoCliente = document.getElementById("telefonoCliente").value;
 		
 		var login = $.ajax({
 			type: "POST",
-			url: "http://localhost:8082/actualizarUsuario",
-			data: JSON.stringify({"cedulaUsuario": cedulaUsuario, "emailUsuario": emailUsuario, "nombreUsuario": nombreUsuario, "usuario": usuario, "password": password}),
+			url: "http://localhost:8082/actualizarCliente",
+			data: JSON.stringify({"cedulaCliente": cedulaCliente, "direccionCliente": direccionCliente, "emailCliente": emailCliente, "nombreCliente": nombreCliente, "telefonoCliente": telefonoCliente}),
 			datatype: "json",
 			contentType: "application/json",
 			success: function(res) {
 				console.log(res);
 				if (res == true){
-					location.replace("./users.jsp");
-				} else {
-					window.alert("Error Actualizando Usuarios");
-				}
+					location.replace("./customers.jsp");
+				} 
+				window.alert("Error Agregando Cliente");
 			}
 		});
     }

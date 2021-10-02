@@ -6,21 +6,21 @@
 <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Proveedores | Tienda</title>
+    <title>Clientes | Tienda</title>
 
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
     
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       
@@ -45,17 +45,17 @@
 		<section id="services" class="services section-bg">
 			<div class="container">
 				<div class="section-title">
-					<h2>Consultar Proveedor</h2>
+					<h2>Consultar Cliente</h2>
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-10 mx-auto mb-5">
 						<form method="post" action="" >
 							<div class="row mt-3">
 								<div class="col-md-5 mx-auto mb-5">
-								 <input type="number" class="form-control mb-3" name="nitProveedor" id="nitProveedor" placeholder="Nit del Proveedor" required> 
+								 <input type="number" class="form-control mb-3" name="cedulaCliente" id="cedulaCliente" placeholder="Número de Cédula" required> 
 								</div>
 								<div class="col-md-5 mx-auto mb-5">
-									<button type="button" class="btn btn-primary btn-block" onclick=search()>Buscar Proveedor  <i class="bx bx-search ml-5"></i></button>
+									<button type="button" class="btn btn-primary btn-block" onclick=search()>Buscar Cliente  <i class="bx bx-search ml-5"></i></button>
 								</div>
 							</div>
 						</form>
@@ -63,15 +63,15 @@
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-8 mx auto mb-2"></div>
-					<p style="color:red;" id="text">El documento no coincide con ningún proveedor registrado</p>
+					<p style="color:red;" id="text">El documento no coincide con ningún cliente registrado</p>
 					<div class="table-responsive-sm">
 						<table
 							class="table table-dark table-borderless table-striped text-center" id="myTable">
 							<thead class="table-dark">
 								<tr>
-									<th scope="col">Nit</th>
-									<th scope="col">Nombre</th>
-									<th scope="col">Ciudad</th>
+									<th scope="col">Cédula</th>
+									<th scope="col">Nombre Completo</th>
+									<th scope="col">Correo Electrónico</th>
 									<th scope="col">Dirección</th>
 									<th scope="col">Teléfono</th>
 									<th scope="col" colspan="2">Acciones</th>
@@ -94,10 +94,10 @@
     text.style.visibility = "hidden";
     
     function search() {
-    	nitProveedor = document.getElementById("nitProveedor").value;
-    	var searchProvider = $.ajax({
+    	cedulaCliente = document.getElementById("cedulaCliente").value;
+    	var searchUser = $.ajax({
     		type:"GET",
-    		url: "http://localhost:8082/consultarProveedor?nit=" + nitProveedor,
+    		url: "http://localhost:8082/consultarCliente?cedula=" + cedulaCliente,
     		success: function(data) {
     			console.log(data);
     			if(data.length > 0){ 
@@ -108,19 +108,19 @@
         				lista = document.getElementById("myTableBody");
         				var tr = document.createElement("tr");
         				var columna1 = document.createElement("td");
-        				columna1.innerHTML = item.nitProveedor;
+        				columna1.innerHTML = item.cedulaCliente;
         				var columna2 = document.createElement("td");
-        				columna2.innerHTML = item.nombreProveedor;
+        				columna2.innerHTML = item.nombreCliente;	
         				var columna3 = document.createElement("td");
-        				columna3.innerHTML = item.ciudadProveedor;	
+        				columna3.innerHTML = item.emailCliente;
         				var columna4 = document.createElement("td");
-        				columna4.innerHTML = item.direccionProveedor;
+        				columna4.innerHTML = item.direccionCliente; 
         				var columna5 = document.createElement("td");
-        				columna5.innerHTML = item.telefonoProveedor;
+        				columna5.innerHTML = item.direccionCliente; 
         				var columna6 = document.createElement("td");
-        				columna6.innerHTML = "<a href='./updateProvider.jsp?nit="+item.nitProveedor+"'  class='btn btn-light' title='Editar Proveedor'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
+        				columna6.innerHTML = "<a href='./updateCustomer.jsp?cedula="+item.cedulaCliente+"'  class='btn btn-light' title='Editar Cliente'><i class='bx bx-edit-alt' style='color: #000;'></i></a>";
         				var columna7 = document.createElement("td");
-        				columna7.innerHTML = "<a class='btn btn-light' title='Eliminar Proveedor' onclick=borrar_usuario('"+item.nitProveedor+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
+        				columna7.innerHTML = "<a class='btn btn-light' title='Eliminar Cliente' onclick=borrar_cliente('"+item.cedulaCliente+"')><i class='bx bx-trash-alt' style='color: #000;'></i></a>" ; 
         				
         				lista.appendChild(tr);
         				tr.appendChild(columna1);
@@ -139,12 +139,12 @@
     	});
     }
     
-    function borrar_usuario(nit) {
+    function borrar_cliente(cedula) {
 		var borrar = $.ajax({
 			type: "DELETE",
-			url: "http://localhost:8082/eliminarProveedor?nit=" + nit,
+			url: "http://localhost:8082/eliminarCliente?cedula=" + cedula,
 			success: function(data) {
-				location.replace("./providers.jsp");
+				location.replace("./customers.jsp");
 			}
 		});
 	}
