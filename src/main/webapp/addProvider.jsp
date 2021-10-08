@@ -76,7 +76,7 @@
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-10 mx-auto mb-5">
-						<form method="post" action="" onsubmit=register()>
+						<form method="post" action="">
 							<input type="number" class="form-control mb-3" name="nitProveedor" id="nitProveedor"
 								placeholder="Nit Proveedor" required> <input type="text"
 								class="form-control mb-3" name="nombreProveedor" id="nombreProveedor"
@@ -87,8 +87,8 @@
 								placeholder="Dirección" required> <input type="text"
 								class="form-control mb-3" name="telefonoProveedor" id="telefonoProveedor" placeholder="Teléfono" required>
 							<p class="text-center">
-								<input type="submit" class="btn btn-primary btn-block"
-									value="Agregar Proveedor">
+								<input type="button" class="btn btn-primary btn-block"
+									value="Agregar Proveedor" onclick=register()>
 							</p>
 						</form>
 					</div>

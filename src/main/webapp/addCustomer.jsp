@@ -86,8 +86,9 @@
 				console.log(res);
 				if (res == true){
 					location.replace("./customers.jsp");
-				} 
+				} else {
 				window.alert("Error Agregando Cliente");
+				}
 			}
 		});
     }

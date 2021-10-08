@@ -77,7 +77,7 @@
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-10 mx-auto mb-5">
-						<form method="post" action="" onsubmit=register()>
+						<form method="post" action="">
 							<input type="email" class="form-control mb-3" name="emailUsuario" id="emailUsuario"
 								placeholder="Correo Electrónico" required> <input type="text"
 								class="form-control mb-3" name="nombreUsuario" id="nombreUsuario"
@@ -88,8 +88,8 @@
 								placeholder="Contraseña" required> <input type="text"
 								class="form-control mb-3" name="usuario" id="usuario" placeholder="Usuario" required>
 							<p class="text-center">
-								<input type="submit" class="btn btn-primary btn-block"
-									value="Agregar Usuario">
+								<input type="button" class="btn btn-primary btn-block"
+									value="Agregar Usuario" onclick=register()>
 							</p>
 						</form>
 					</div>

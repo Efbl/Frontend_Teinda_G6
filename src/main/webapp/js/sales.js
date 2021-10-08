@@ -154,7 +154,7 @@ function crear_detalle_venta (res) {
 					console.log(res);
 					if (res!=0){
 						window.alert("Venta Registrada");
-						//location.replace("./users.jsp");
+						location.replace("./main.jsp");
 					} else {
 						window.alert("Error Agregando Venta");
 					}

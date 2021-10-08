@@ -50,7 +50,7 @@
 				<div class="d-grid gap-2 col-6 mx-auto">
 				  <a href="./reporteUsuarios.jsp" class="btn btn-success mt-3 mb-3" type="button">Listado de Usuarios</a>
 				  <a href="./reporteClientes.jsp" class="btn btn-warning mt-3 mb-3" type="button">Listado de Clientes</a>
-				  <a class="btn btn-info mt-3 mb-3" type="button">Ventas por Cliente</a>
+				  <a href="./reporteVentas.jsp" class="btn btn-info mt-3 mb-3" type="button">Ventas por Cliente</a>
 				</div>
 			</div>
 		</section>
