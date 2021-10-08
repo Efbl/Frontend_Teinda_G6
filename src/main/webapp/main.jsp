@@ -33,6 +33,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
 </head>
 
 <body>
@@ -52,7 +53,33 @@
 	</header>
 	<!-- End Header -->
 
-	<main id="main"></main>
+	<main id="main">
+		<section id="hero" class="d-flex align-items-center">
+
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+					<h1>Bienvenido a Tienda Genérica</h1>
+					<h2>Accusantium quam, aliquam ultricies eget tempor id,
+						aliquam eget nibh et. Maecen aliquam, risus at semper. Proin
+						iaculis purus consequat sem cure digni ssim. Donec porttitora
+						entum.</h2>
+				</div>
+				<div class="col-lg-6 order-1 order-lg-2 hero-img">
+					<div class="container ml-5 mt-5">
+						<div class="row mt-3">
+							<div class="col-md-9 mx-auto mb-5">
+								<img src="./assets/img/supermarket.jpg" style="width:500px; margin-bottom:80px;">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	</main>
 	<!-- End #main -->
 
 	<!-- ======= Footer ======= -->

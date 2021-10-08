@@ -55,7 +55,7 @@
 								class="form-control mb-3" name="nombreUsuario" id="nombreUsuario"
 								placeholder="Nombre Completo" title="Nombre Completo" required> <input type="number"
 								class="form-control mb-3" name="cedulaUsuario" id="cedulaUsuario"
-								placeholder="Número de Cédula" title="Número de Cédula" required> <input type="text"
+								placeholder="Número de Cédula" title="Número de Cédula" readonly> <input type="text"
 								class="form-control mb-3" name="password" id="password"
 								placeholder="Contraseña" title="Contraseña" required> <input type="text"
 								class="form-control mb-3" name="usuario" id="usuario" placeholder="Usuario" title="Usuario" required>

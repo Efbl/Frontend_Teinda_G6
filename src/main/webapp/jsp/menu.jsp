@@ -4,9 +4,9 @@
 		<li><a class="nav-link scrollto" href="./users.jsp">Usuarios</a></li>
 		<li><a class="nav-link scrollto" href="./customers.jsp">Clientes</a></li>
 		<li><a class="nav-link scrollto" href="./providers.jsp">Proveedores</a></li>
-		<li><a class="nav-link scrollto" href="#">Productos</a></li>
-		<li><a class="nav-link scrollto" href="#">Ventas</a></li>
-		<li><a class="nav-link scrollto" href="#">Reportes</a></li>
+		<li><a class="nav-link scrollto" href="./addProducts.jsp">Productos</a></li>
+		<li><a class="nav-link scrollto" href="./addSales.jsp">Ventas</a></li>
+		<li><a class="nav-link scrollto" href="./reports.jsp">Reportes</a></li>
 	</ul>
 	<i class="bi bi-list mobile-nav-toggle"></i>
 </nav>

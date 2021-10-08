@@ -20,6 +20,9 @@
 		contentType: "application/json",
 		success: function(res) {
 			if (res == true){
+				if(typeof(Storage)!= "undefined"){
+					localStorage.setItem("username", user);					
+				}
 				location.replace("./main.jsp");
 			} else {
 				window.alert("Usuario o Contraseña Incorrectos");
